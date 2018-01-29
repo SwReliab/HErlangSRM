@@ -40,16 +40,6 @@ namespace mylib {
     VectorT get_w() const;
     int get_n() const { return m_n; }
 
-    template <typename Func>
-    double comp(double a, double b, Func&& f) {
-      VectorT fx(m_n);
-      double c = comp_fx(a, b, fx);
-      for (int i=0; i<m_n; i++) {
-        fx[i] = f(fx[i]);
-      }
-      return comp_value(c, fx);
-    }
-
   private:
     int m_n;
     VectorT m_x;

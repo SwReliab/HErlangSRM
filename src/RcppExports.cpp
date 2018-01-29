@@ -5,26 +5,62 @@
 
 using namespace Rcpp;
 
-// test
-double test(int n, double t0, double t1, double lam, int a, double mu, int b);
-RcppExport SEXP _HErlangSRM_test(SEXP nSEXP, SEXP t0SEXP, SEXP t1SEXP, SEXP lamSEXP, SEXP aSEXP, SEXP muSEXP, SEXP bSEXP) {
+// Cemest
+List Cemest(NumericVector t, IntegerVector i, IntegerVector j, IntegerVector n, double omega, NumericMatrix p_, NumericVector lam_, IntegerVector a, NumericVector mu_, IntegerVector b, int gn, double geps, double atol, double rtol, int maxiter);
+RcppExport SEXP _HErlangSRM_Cemest(SEXP tSEXP, SEXP iSEXP, SEXP jSEXP, SEXP nSEXP, SEXP omegaSEXP, SEXP p_SEXP, SEXP lam_SEXP, SEXP aSEXP, SEXP mu_SEXP, SEXP bSEXP, SEXP gnSEXP, SEXP gepsSEXP, SEXP atolSEXP, SEXP rtolSEXP, SEXP maxiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< double >::type t0(t0SEXP);
-    Rcpp::traits::input_parameter< double >::type t1(t1SEXP);
-    Rcpp::traits::input_parameter< double >::type lam(lamSEXP);
-    Rcpp::traits::input_parameter< int >::type a(aSEXP);
-    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
-    Rcpp::traits::input_parameter< int >::type b(bSEXP);
-    rcpp_result_gen = Rcpp::wrap(test(n, t0, t1, lam, a, mu, b));
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type i(iSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type j(jSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type n(nSEXP);
+    Rcpp::traits::input_parameter< double >::type omega(omegaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type p_(p_SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lam_(lam_SEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type mu_(mu_SEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type b(bSEXP);
+    Rcpp::traits::input_parameter< int >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type geps(gepsSEXP);
+    Rcpp::traits::input_parameter< double >::type atol(atolSEXP);
+    Rcpp::traits::input_parameter< double >::type rtol(rtolSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cemest(t, i, j, n, omega, p_, lam_, a, mu_, b, gn, geps, atol, rtol, maxiter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Cmvfd
+NumericVector Cmvfd(NumericVector t, List model);
+RcppExport SEXP _HErlangSRM_Cmvfd(SEXP tSEXP, SEXP modelSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< List >::type model(modelSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cmvfd(t, model));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Cmvfc
+NumericVector Cmvfc(NumericVector t, List model, int gn, double geps);
+RcppExport SEXP _HErlangSRM_Cmvfc(SEXP tSEXP, SEXP modelSEXP, SEXP gnSEXP, SEXP gepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< List >::type model(modelSEXP);
+    Rcpp::traits::input_parameter< int >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type geps(gepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cmvfc(t, model, gn, geps));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_HErlangSRM_test", (DL_FUNC) &_HErlangSRM_test, 7},
+    {"_HErlangSRM_Cemest", (DL_FUNC) &_HErlangSRM_Cemest, 15},
+    {"_HErlangSRM_Cmvfd", (DL_FUNC) &_HErlangSRM_Cmvfd, 2},
+    {"_HErlangSRM_Cmvfc", (DL_FUNC) &_HErlangSRM_Cmvfc, 4},
     {NULL, NULL, 0}
 };
 
