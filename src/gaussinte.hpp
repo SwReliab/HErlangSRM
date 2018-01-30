@@ -1,6 +1,6 @@
 #include <cmath>
 
-namespace mylib {
+namespace marlib {
 
 /*
 !   Description: Gauss quadrature for the following integral

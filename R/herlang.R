@@ -1,4 +1,3 @@
-
 #' @export
 
 cor <- function(model) {
@@ -17,51 +16,29 @@ cor <- function(model) {
 #' @export
 
 mvfd <- function(t, model) {
-	Cmvfd(t, model)
+	Cherlang_mvfd(t, model)
 }
 
 #' @export
 
 mvfc <- function(t, model, gn = 15L, geps = 1.0e-8) {
-	Cmvfc(t, model, gn, geps)
+	Cherlang_mvfc(t, model, gn, geps)
 }
 
-reli <- function(t, s, res) {
-  p <- apply(res$p, 1, sum)
-  v <- numeric(length(t))
-  for (i in 1:length(res$a)) {
-    v <- v + p[i] * (pgamma(q=t, shape=res$a[i], rate=res$lam[i]) - pgamma(q=s, shape=res$a[i], rate=res$lam[i]))
- }
- exp(-res$omega * v)
+#' @export
+
+reli <- function(t, s, model) {
+	Cherlang_reli(t, s, model)
 }
 
-ppp <- function(t, s, res) {
-	indexlist <- makelist(length(res$a), length(res$b))
-	v <- sapply(t, function(tt) sum(sapply(indexlist, function(idx) res$p[idx[1],idx[2]] * ff1(s, tt, res$lam[idx[1]], res$a[idx[1]], res$mu[idx[2]], res$b[idx[2]]))))
-	exp(res$omega * v)
+#' @export
+
+pc <- function(t, s, model, gn = 15L, geps = 1.0e-8) {
+	Cherlang_pc(t, s, model, gn, geps)
 }
 
-relic <- function(t, s, res) {
-	reli(t, s, res) * ppp(t, s, res)
-}
+#' @export
 
-###
-
-logreli <- function(t, s, res) {
-  p <- apply(res$p, 1, sum)
-  v <- numeric(length(t))
-  for (i in 1:length(res$a)) {
-    v <- v + p[i] * (pgamma(q=t, shape=res$a[i], rate=res$lam[i]) - pgamma(q=s, shape=res$a[i], rate=res$lam[i]))
- }
- -res$omega * v
-}
-
-logppp <- function(t, s, res) {
-	indexlist <- makelist(length(res$a), length(res$b))
-	v <- sapply(t, function(tt) sum(sapply(indexlist, function(idx) res$p[idx[1],idx[2]] * ff1(s, tt, res$lam[idx[1]], res$a[idx[1]], res$mu[idx[2]], res$b[idx[2]]))))
-	res$omega * v
-}
-
-logrelic <- function(t, s, res) {
-	logreli(t, s, res) + logppp(t, s, res)
+relic <- function(t, s, model, gn = 15L, geps = 1.0e-8) {
+	Cherlang_relic(t, s, model, gn, geps)
 }

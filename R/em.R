@@ -6,7 +6,7 @@ emest <- function(data, params, atol=1.0e-3, rtol=1.0e-6, maxiter=2000, gn=15, g
 	i <- data$counts@i
 	j <- data$counts@j
 	n <- data$counts@x
-	Cemest(t, i, j, n, params$omega, params$p, params$lam, params$a, params$mu, params$b, gn, geps, atol, rtol, maxiter)
+	Cherlang_emest(t, i, j, n, params$omega, params$p, params$lam, params$a, params$mu, params$b, gn, geps, atol, rtol, maxiter)
 }
 
 mean.frm <- function(data) {

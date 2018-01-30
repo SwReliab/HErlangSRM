@@ -5,9 +5,9 @@
 
 using namespace Rcpp;
 
-// Cemest
-List Cemest(NumericVector t, IntegerVector i, IntegerVector j, IntegerVector n, double omega, NumericMatrix p_, NumericVector lam_, IntegerVector a, NumericVector mu_, IntegerVector b, int gn, double geps, double atol, double rtol, int maxiter);
-RcppExport SEXP _HErlangSRM_Cemest(SEXP tSEXP, SEXP iSEXP, SEXP jSEXP, SEXP nSEXP, SEXP omegaSEXP, SEXP p_SEXP, SEXP lam_SEXP, SEXP aSEXP, SEXP mu_SEXP, SEXP bSEXP, SEXP gnSEXP, SEXP gepsSEXP, SEXP atolSEXP, SEXP rtolSEXP, SEXP maxiterSEXP) {
+// Cherlang_emest
+List Cherlang_emest(NumericVector t, IntegerVector i, IntegerVector j, IntegerVector n, double omega, NumericMatrix p_, NumericVector lam_, IntegerVector a, NumericVector mu_, IntegerVector b, int gn, double geps, double atol, double rtol, int maxiter);
+RcppExport SEXP _HErlangSRM_Cherlang_emest(SEXP tSEXP, SEXP iSEXP, SEXP jSEXP, SEXP nSEXP, SEXP omegaSEXP, SEXP p_SEXP, SEXP lam_SEXP, SEXP aSEXP, SEXP mu_SEXP, SEXP bSEXP, SEXP gnSEXP, SEXP gepsSEXP, SEXP atolSEXP, SEXP rtolSEXP, SEXP maxiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -26,25 +26,25 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type atol(atolSEXP);
     Rcpp::traits::input_parameter< double >::type rtol(rtolSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(Cemest(t, i, j, n, omega, p_, lam_, a, mu_, b, gn, geps, atol, rtol, maxiter));
+    rcpp_result_gen = Rcpp::wrap(Cherlang_emest(t, i, j, n, omega, p_, lam_, a, mu_, b, gn, geps, atol, rtol, maxiter));
     return rcpp_result_gen;
 END_RCPP
 }
-// Cmvfd
-NumericVector Cmvfd(NumericVector t, List model);
-RcppExport SEXP _HErlangSRM_Cmvfd(SEXP tSEXP, SEXP modelSEXP) {
+// Cherlang_mvfd
+NumericVector Cherlang_mvfd(NumericVector t, List model);
+RcppExport SEXP _HErlangSRM_Cherlang_mvfd(SEXP tSEXP, SEXP modelSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
     Rcpp::traits::input_parameter< List >::type model(modelSEXP);
-    rcpp_result_gen = Rcpp::wrap(Cmvfd(t, model));
+    rcpp_result_gen = Rcpp::wrap(Cherlang_mvfd(t, model));
     return rcpp_result_gen;
 END_RCPP
 }
-// Cmvfc
-NumericVector Cmvfc(NumericVector t, List model, int gn, double geps);
-RcppExport SEXP _HErlangSRM_Cmvfc(SEXP tSEXP, SEXP modelSEXP, SEXP gnSEXP, SEXP gepsSEXP) {
+// Cherlang_mvfc
+NumericVector Cherlang_mvfc(NumericVector t, List model, int gn, double geps);
+RcppExport SEXP _HErlangSRM_Cherlang_mvfc(SEXP tSEXP, SEXP modelSEXP, SEXP gnSEXP, SEXP gepsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -52,15 +52,151 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< List >::type model(modelSEXP);
     Rcpp::traits::input_parameter< int >::type gn(gnSEXP);
     Rcpp::traits::input_parameter< double >::type geps(gepsSEXP);
-    rcpp_result_gen = Rcpp::wrap(Cmvfc(t, model, gn, geps));
+    rcpp_result_gen = Rcpp::wrap(Cherlang_mvfc(t, model, gn, geps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Cherlang_reli
+NumericVector Cherlang_reli(NumericVector t, double s, List model);
+RcppExport SEXP _HErlangSRM_Cherlang_reli(SEXP tSEXP, SEXP sSEXP, SEXP modelSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< List >::type model(modelSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cherlang_reli(t, s, model));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Cherlang_pc
+NumericVector Cherlang_pc(NumericVector t, double s, List model, int gn, double geps);
+RcppExport SEXP _HErlangSRM_Cherlang_pc(SEXP tSEXP, SEXP sSEXP, SEXP modelSEXP, SEXP gnSEXP, SEXP gepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< List >::type model(modelSEXP);
+    Rcpp::traits::input_parameter< int >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type geps(gepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cherlang_pc(t, s, model, gn, geps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Cherlang_relic
+NumericVector Cherlang_relic(NumericVector t, double s, List model, int gn, double geps);
+RcppExport SEXP _HErlangSRM_Cherlang_relic(SEXP tSEXP, SEXP sSEXP, SEXP modelSEXP, SEXP gnSEXP, SEXP gepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< List >::type model(modelSEXP);
+    Rcpp::traits::input_parameter< int >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type geps(gepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(Cherlang_relic(t, s, model, gn, geps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_daxpy
+NumericVector test_daxpy(double a, NumericVector x, NumericVector y);
+RcppExport SEXP _HErlangSRM_test_daxpy(SEXP aSEXP, SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(test_daxpy(a, x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_dscal
+NumericVector test_dscal(double a, NumericVector x);
+RcppExport SEXP _HErlangSRM_test_dscal(SEXP aSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dscal(a, x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_dasum
+double test_dasum(NumericMatrix x);
+RcppExport SEXP _HErlangSRM_test_dasum(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dasum(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_dgemv
+NumericVector test_dgemv(char trans, double a, NumericMatrix A, NumericVector x, double b, NumericVector y);
+RcppExport SEXP _HErlangSRM_test_dgemv(SEXP transSEXP, SEXP aSEXP, SEXP ASEXP, SEXP xSEXP, SEXP bSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< char >::type trans(transSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type A(ASEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dgemv(trans, a, A, x, b, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_dgemm
+NumericMatrix test_dgemm(char transA, char transB, double a, NumericMatrix A, NumericMatrix B, double b, NumericMatrix C);
+RcppExport SEXP _HErlangSRM_test_dgemm(SEXP transASEXP, SEXP transBSEXP, SEXP aSEXP, SEXP ASEXP, SEXP BSEXP, SEXP bSEXP, SEXP CSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< char >::type transA(transASEXP);
+    Rcpp::traits::input_parameter< char >::type transB(transBSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type A(ASEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type B(BSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type C(CSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_dgemm(transA, transB, a, A, B, b, C));
+    return rcpp_result_gen;
+END_RCPP
+}
+// test_mexp_unif
+NumericMatrix test_mexp_unif(char trans, NumericMatrix P, double qv, double t, NumericMatrix x);
+RcppExport SEXP _HErlangSRM_test_mexp_unif(SEXP transSEXP, SEXP PSEXP, SEXP qvSEXP, SEXP tSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< char >::type trans(transSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type P(PSEXP);
+    Rcpp::traits::input_parameter< double >::type qv(qvSEXP);
+    Rcpp::traits::input_parameter< double >::type t(tSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(test_mexp_unif(trans, P, qv, t, x));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_HErlangSRM_Cemest", (DL_FUNC) &_HErlangSRM_Cemest, 15},
-    {"_HErlangSRM_Cmvfd", (DL_FUNC) &_HErlangSRM_Cmvfd, 2},
-    {"_HErlangSRM_Cmvfc", (DL_FUNC) &_HErlangSRM_Cmvfc, 4},
+    {"_HErlangSRM_Cherlang_emest", (DL_FUNC) &_HErlangSRM_Cherlang_emest, 15},
+    {"_HErlangSRM_Cherlang_mvfd", (DL_FUNC) &_HErlangSRM_Cherlang_mvfd, 2},
+    {"_HErlangSRM_Cherlang_mvfc", (DL_FUNC) &_HErlangSRM_Cherlang_mvfc, 4},
+    {"_HErlangSRM_Cherlang_reli", (DL_FUNC) &_HErlangSRM_Cherlang_reli, 3},
+    {"_HErlangSRM_Cherlang_pc", (DL_FUNC) &_HErlangSRM_Cherlang_pc, 5},
+    {"_HErlangSRM_Cherlang_relic", (DL_FUNC) &_HErlangSRM_Cherlang_relic, 5},
+    {"_HErlangSRM_test_daxpy", (DL_FUNC) &_HErlangSRM_test_daxpy, 3},
+    {"_HErlangSRM_test_dscal", (DL_FUNC) &_HErlangSRM_test_dscal, 2},
+    {"_HErlangSRM_test_dasum", (DL_FUNC) &_HErlangSRM_test_dasum, 1},
+    {"_HErlangSRM_test_dgemv", (DL_FUNC) &_HErlangSRM_test_dgemv, 6},
+    {"_HErlangSRM_test_dgemm", (DL_FUNC) &_HErlangSRM_test_dgemm, 7},
+    {"_HErlangSRM_test_mexp_unif", (DL_FUNC) &_HErlangSRM_test_mexp_unif, 5},
     {NULL, NULL, 0}
 };
 
