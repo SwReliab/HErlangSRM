@@ -3,7 +3,6 @@
 \docType{package}
 \name{HErlangSRM}
 \alias{HErlangSRM}
-\alias{HErlangSRM-package}
 \title{HErlangSRM}
 \description{
 Hyper-Erlang model for fault detection/correction time distributions
