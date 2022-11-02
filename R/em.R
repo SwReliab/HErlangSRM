@@ -83,6 +83,8 @@ emest.inc <- function(data, phnum, shape=list(a=c(1), b=c(1)), atol=1.0e-3, rtol
 	best.result
 }
 
+#' @export
+
 emest.inc.aic <- function(data, phnum, shape=list(a=c(1), b=c(1)), atol=1.0e-3, rtol=1.0e-6, maxiter=2000, gn=15, geps=1.0e-8) {
 	minaic <- +Inf
   # maxllfv <- rep(-Inf, phsize)

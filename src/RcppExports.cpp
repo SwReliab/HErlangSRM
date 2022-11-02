@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Cherlang_emest
 List Cherlang_emest(NumericVector t, IntegerVector i, IntegerVector j, IntegerVector n, double omega, NumericMatrix p_, NumericVector lam_, IntegerVector a, NumericVector mu_, IntegerVector b, int gn, double geps, double atol, double rtol, int maxiter);
 RcppExport SEXP _HErlangSRM_Cherlang_emest(SEXP tSEXP, SEXP iSEXP, SEXP jSEXP, SEXP nSEXP, SEXP omegaSEXP, SEXP p_SEXP, SEXP lam_SEXP, SEXP aSEXP, SEXP mu_SEXP, SEXP bSEXP, SEXP gnSEXP, SEXP gepsSEXP, SEXP atolSEXP, SEXP rtolSEXP, SEXP maxiterSEXP) {
